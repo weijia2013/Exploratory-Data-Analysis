@@ -1,109 +1,85 @@
 ### Week1 Quiz
-
 ## Q1
-
 # Principles of Analytic Graphics
 
-This second programming assignment will require you to write an R
-function that is able to cache potentially time-consuming computations.
-For example, taking the mean of a numeric vector is typically a fast
-operation. However, for a very long vector, it may take too long to
-compute the mean, especially if it has to be computed repeatedly (e.g.
-in a loop). If the contents of a vector are not changing, it may make
-sense to cache the value of the mean so that when we need it again, it
-can be looked up in the cache rather than recomputed. In this
-Programming Assignment you will take advantage of the scoping rules of
-the R language and how they can be manipulated to preserve state inside
-of an R object.
+1.  Show comparisons
+2.  Show causality, mechanism, explanation
+3.  Show multivariate data
+4.  Integrate multiple modes of evidence
+5.  Describe and document the evidence 
+6.  Content is king
 
-### Example: Caching the Mean of a Vector
+##Q2
+## Exploratory Graphs
+## Exploratory graphs in data analysis
 
-In this example we introduce the `<<-` operator which can be used to
-assign a value to an object in an environment that is different from the
-current environment. Below are two functions that are used to create a
-special object that stores a numeric vector and caches its mean.
+1.  To understand data properties 
+2.  To find patterns in data
+3.  To suggest modelling strategies
+4.  To "debug" analyses
 
-The first function, `makeVector` creates a special "vector", which is
-really a list containing a function to
+## Characteristics of exploratory graphs
 
-1.  set the value of the vector
-2.  get the value of the vector
-3.  set the value of the mean
-4.  get the value of the mean
+1.  They are made quickly
+2.  A large number are made
+3.  The goal is for personal understanding
+4.  Axes/legends are generally cleaned up(later)
+5.  Color/size are primarily used for information
 
-<!-- -->
+##Q3
+## Base plot system
 
-    makeVector <- function(x = numeric()) {
-            m <- NULL
-            set <- function(y) {
-                    x <<- y
-                    m <<- NULL
-            }
-            get <- function() x
-            setmean <- function(mean) m <<- mean
-            getmean <- function() m
-            list(set = set, get = get,
-                 setmean = setmean,
-                 getmean = getmean)
-    }
+1.  Start with blank canvas and build up from there
+2.  Start with plot function (or similar)
+3.  Use annotation functions to add/modify (text, lines, points, axis)
+4.  Convenient, mirrors how we think of building plots and analyzing data
+5.  `Can't go back once plot has started`  (i.e. to adjust margins); need to plan in advance
+6.  Difficult to "translate" to others once a new plot has been created (no graphical "language")
+7.  Plot is just `a series of R commands`
 
-The following function calculates the mean of the special "vector"
-created with the above function. However, it first checks to see if the
-mean has already been calculated. If so, it `get`s the mean from the
-cache and skips the computation. Otherwise, it calculates the mean of
-the data and sets the value of the mean in the cache via the `setmean`
-function.
+##Q8
+## Graphics Devices in R
 
-    cachemean <- function(x, ...) {
-            m <- x$getmean()
-            if(!is.null(m)) {
-                    message("getting cached data")
-                    return(m)
-            }
-            data <- x$get()
-            m <- mean(data, ...)
-            x$setmean(m)
-            m
-    }
+1.  On a Mac the screen device is launched with the `quartz()`
+2.  On Windows the screen device is launched with `windows()`
+3.  On Unix/Linux the screen device is launced with `x11()`
 
-### Assignment: Caching the Inverse of a Matrix
+##Q4, Q5
+## Graphic File Devices
 
-Matrix inversion is usually a costly computation and there may be some
-benefit to caching the inverse of a matrix rather than computing it
-repeatedly (there are also alternatives to matrix inversion that we will
-not discuss here). Your assignment is to write a pair of functions that
-cache the inverse of a matrix.
+## Vector formats
 
-Write the following functions:
+1. pdf
+2. svg
+3. win.metafile
+4. postscript
 
-1.  `makeCacheMatrix`: This function creates a special "matrix" object
-    that can cache its inverse.
-2.  `cacheSolve`: This function computes the inverse of the special
-    "matrix" returned by `makeCacheMatrix` above. If the inverse has
-    already been calculated (and the matrix has not changed), then
-    `cacheSolve` should retrieve the inverse from the cache.
+## Bitmap formats
 
-Computing the inverse of a square matrix can be done with the `solve`
-function in R. For example, if `X` is a square invertible matrix, then
-`solve(X)` returns its inverse.
+1. png
+2. jpeg
+3. tiff
+4. bmp
 
-For this assignment, assume that the matrix supplied is always
-invertible.
+##Q6
 
-In order to complete this assignment, you must do the following:
+Vector formats are good for line drawings and plots with solid colors using a modest number of points
+Bitmap formats are good for plots with a large number of points, natural scenes or web-based plots
 
-1.  Fork the GitHub repository containing the stub R files at
-    [https://github.com/rdpeng/ProgrammingAssignment2](https://github.com/rdpeng/ProgrammingAssignment2)
-    to create a copy under your own account.
-2.  Clone your forked GitHub repository to your computer so that you can
-    edit the files locally on your own machine.
-3.  Edit the R file contained in the git repository and place your
-    solution in that file (please do not rename the file).
-4.  Commit your completed R file into YOUR git repository and push your
-    git branch to the GitHub repository under your account.
-5.  Submit to Coursera the URL to your GitHub repository that contains
-    the completed R code for the assignment.
+##Q9
+## Some Important Base Graphics Parameters
 
-### Grading
+1.  `pch`: the plotting symbol (default is open circle)
+2.  `lty`: the line type (default is solid line), can be dashed. dotted, etc.
+3.  `lwd`: the line width, specified as an integer multiple
+4.  `col`: the plotting color, specified as a number, string, or hex code; the colors() function gives you a vector of colors by name
+5.  `xlab`: character string for the x-axis label
+6.  `ylab`: character string for the y-axis label
+7.  `las`: the orientation of the axis labels on the plot
+8.  `bg`: the background color
+9.  `mar`: the margin size
+10.  `oma`: the outer margin size(default is 0 for all sides)
+11.  `mfrow`: number of plots per row, column(plots are filled row-wise)
+12.  `mfcol`: number of plots per row, column(plots are filled column-wise)
 
-This assignment will be graded via peer assessment.
+
