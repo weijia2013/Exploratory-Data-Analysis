@@ -1,6 +1,5 @@
 ### Week1 Quiz
-## Q1
-# Principles of Analytic Graphics
+## Q1 Principles of Analytic Graphics
 
 1.  Show comparisons
 2.  Show causality, mechanism, explanation
@@ -9,9 +8,7 @@
 5.  Describe and document the evidence 
 6.  Content is king
 
-##Q2
-## Exploratory Graphs
-## Exploratory graphs in data analysis
+##Q2 Exploratory graphs in data analysis
 
 1.  To understand data properties 
 2.  To find patterns in data
@@ -26,8 +23,7 @@
 4.  Axes/legends are generally cleaned up(later)
 5.  Color/size are primarily used for information
 
-##Q3
-## Base plot system
+##Q3 Base plot system
 
 1.  Start with blank canvas and build up from there
 2.  Start with plot function (or similar)
@@ -37,15 +33,13 @@
 6.  Difficult to "translate" to others once a new plot has been created (no graphical "language")
 7.  Plot is just `a series of R commands`
 
-##Q8
-## Graphics Devices in R
+##Q8 Graphics Devices in R
 
 1.  On a Mac the screen device is launched with the `quartz()`
 2.  On Windows the screen device is launched with `windows()`
 3.  On Unix/Linux the screen device is launced with `x11()`
 
-##Q4, Q5
-## Graphic File Devices
+##Q4, Q5 Graphic File Devices
 
 ## Vector formats
 
@@ -66,8 +60,7 @@
 Vector formats are good for line drawings and plots with solid colors using a modest number of points
 Bitmap formats are good for plots with a large number of points, natural scenes or web-based plots
 
-##Q9
-## Some Important Base Graphics Parameters
+##Q9 Some Important Base Graphics Parameters
 
 1.  `pch`: the plotting symbol (default is open circle)
 2.  `lty`: the line type (default is solid line), can be dashed. dotted, etc.
