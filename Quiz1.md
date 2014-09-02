@@ -1,4 +1,4 @@
-### Week1 Quiz
+# Week1 Quiz
 ## Q1 Principles of Analytic Graphics
 
 1.  Show comparisons
